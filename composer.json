@@ -1,16 +1,11 @@
 {
     "autoload": {
     	"psr-4": {
-    		"NXFrontend\\": "./frontend/includes",
-    		"NXAdmin\\": "./admin/includes",
-    		"NXConfig\\": "./config"
+    		"DevNax\\Help\\": ["./config", "./includes"]
 		},
-		"classmap": [
-			"./admin/admin.php",
-			"./frontend/frontend.php"
-		],
+		"classmap": [],
     	"files": [
-    		"functions.php"
+    		"./includes/functions.php"
     	]
-    }
+    } 
 }

@@ -23,19 +23,24 @@ if ( ! defined( 'ABSPATH' )) {
  */
 include __DIR__.'/vendor/autoload.php';
 
+use DevNax\Help\Keys as Keys;
 
 
+final class WpStarter{
 
-final class NXLogin{
+
+    const PREFIX         = "NXH";
+    private static $keys = null;
 
 
     /**
      * initial the Plugin
      */
     static function init(){
-        if(defined("NXL_INIT")){
+        if(defined("NXH_INIT")){
             return;
         }
+        Keys::init();
         self::consts();
         self::actions();
 
@@ -47,16 +52,16 @@ final class NXLogin{
      * Plugin Constans
      */
     private static function consts(){
-        define('NXL_INIT', true );
-        define('NXL_VERSION', '1.1.0' );
-        define('NXL_SCRIPT_VERSION', rand() );
-        define('NXL_TXTDOMAIN', 'nx-login' );
-        define('NXL_DIR', __DIR__ );
-        define('NXL_URL', plugin_dir_url( __FILE__ ) );
-        define('NXL_ADMIN_URI', NXL_URL.'/admin' );
-        define('NXL_ADMIN_DIR', NXL_DIR.'/admin' );
-        define('NXL_FRONTEND_DIR', NXL_DIR.'/frontend' );
-        define('NXL_FRONTEND_URI', NXL_URL.'/frontend' );
+        define('NXH_INIT', true );
+        define('NXH_VERSION', '1.1.0' );
+        define('NXH_SCRIPT_VERSION', rand() );
+        define('NXH_TXTDOMAIN', 'nx-login' );
+        define('NXH_DIR', __DIR__ );
+        define('NXH_URL', plugin_dir_url( __FILE__ ) );
+        define('NXH_ADMIN_URI', NXL_URL.'/admin' );
+        define('NXH_ADMIN_DIR', NXL_DIR.'/admin' );
+        define('NXH_FRONTEND_DIR', NXL_DIR.'/frontend' );
+        define('NXH_FRONTEND_URI', NXL_URL.'/frontend' );
     }
 
 
@@ -70,49 +75,29 @@ final class NXLogin{
         /**
          * Loaded hook
          */
-        add_action( 'plugins_loaded', "NXLogin::loaded" );
+        add_action( 'plugins_loaded',  Keys::$names->lounch_cb);
 
         /**
          * Adding action links
          */
-        add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), '\NXLConfig\ActionLinks::links' );
+        add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), Keys::$names->action_link_cb );
 
         /*
 		 * Activation Plugin Hook
 		 */
-		register_activation_hook( __FILE__, '\NXLConfig\Active::run' );
+		register_activation_hook( __FILE__, Keys::$names->active_cb );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		register_deactivation_hook( __FILE__, '\NXLConfig\Deactive::run' );
+		register_deactivation_hook( __FILE__, Keys::$names->deactive_cb );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		register_uninstall_hook( __FILE__, '\NXLConfig\Uninstall::run' );
+		register_uninstall_hook( __FILE__, Keys::$names->uninstall_cb );
     }
 
-
-
-
-    /**
-     * Load all files here
-     */
-    static function loaded(){
-        
-
-        // load for admin
-        if(is_admin()){
-            \NXLAdmin\Admin::init();
-            return;
-        }
-
-        // fronend 
-        \NXLFrontend\Frontend::init();
-
-        
-    }
 
 }
 
@@ -122,5 +107,5 @@ final class NXLogin{
 /**
  * Start the plugin 
  */
-NXLogin::init();
+WpStarter::init();
 

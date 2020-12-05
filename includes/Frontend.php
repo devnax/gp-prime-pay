@@ -1,6 +1,6 @@
 <?php
 
-namespace NXLFrontend;
+namespace DevNax\Help;
 
 
 

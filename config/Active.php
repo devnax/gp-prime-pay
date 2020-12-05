@@ -1,7 +1,7 @@
 <?php
 
 
-namespace NXLConfig;
+namespace DevNax\Help;
 
 class Active{
 
