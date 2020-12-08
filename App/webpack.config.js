@@ -16,7 +16,6 @@ if(!entryObject){
 
 
 module.exports = (env, argv) => {
-  console.log(argv.mode)
   const isDev = argv.mode == 'development' ? true : false;
 
   return {

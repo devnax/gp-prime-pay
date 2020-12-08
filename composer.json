@@ -5,7 +5,7 @@
 		},
 		"classmap": [],
     	"files": [
-    		"./includes/functions.php"
+    		"./functions.php"
     	]
     } 
 }

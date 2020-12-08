@@ -3,8 +3,6 @@
 
 return [
         
-
-
     // Config Callbacks
     "action_link_cb"            => "DevNax\Help\ActionLinks::links",
     "active_cb"                 => "DevNax\Help\Active::run",

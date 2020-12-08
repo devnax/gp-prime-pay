@@ -1,15 +1,15 @@
 <?php
 namespace DevNax\Help;
 
-// Kyes::$names->callback_cb
+// Keys::$names->callback_cb
 class Keys{
 
-    static $names = false;
+    static $names        = false;
     private $KEY_TREE    = '';
 
     static function init(){
         if(!self::$names){
-            $keys = include __DIR__.'/config.php';
+            $keys = include __DIR__.'/strings.php';
             self::$names = new self;
             self::$names->KEY_TREE = $keys;
         }

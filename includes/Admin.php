@@ -6,7 +6,6 @@ use DevNax\Help\Keys as Keys;
 
 class Admin{
 
-
     static function init(){
         // Loading the Admin scripts
         add_action( 'admin_enqueue_scripts', Keys::$names->admin_enqueue_scripts );
@@ -14,11 +13,6 @@ class Admin{
     }
 
     static function Scripts(){
-        
-    }
-
-
-    static function adminFooter(){
         
     }
 }
