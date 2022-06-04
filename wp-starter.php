@@ -28,10 +28,7 @@ use DevNax\Help\Keys as Keys;
 
 final class WpStarter{
 
-
     const PREFIX         = "NXH";
-    private static $keys = null;
-
 
     /**
      * initial the Plugin
@@ -58,10 +55,10 @@ final class WpStarter{
         define('NXH_TXTDOMAIN', 'nx-login' );
         define('NXH_DIR', __DIR__ );
         define('NXH_URL', plugin_dir_url( __FILE__ ) );
-        define('NXH_ADMIN_URI', NXL_URL.'/admin' );
-        define('NXH_ADMIN_DIR', NXL_DIR.'/admin' );
-        define('NXH_FRONTEND_DIR', NXL_DIR.'/frontend' );
-        define('NXH_FRONTEND_URI', NXL_URL.'/frontend' );
+        define('NXH_ADMIN_URI', NXH_INIT.'/admin' );
+        define('NXH_ADMIN_DIR', NXH_DIR.'/admin' );
+        define('NXH_FRONTEND_DIR', NXH_DIR.'/frontend' );
+        define('NXH_FRONTEND_URI', NXH_INIT.'/frontend' );
     }
 
 
@@ -75,27 +72,27 @@ final class WpStarter{
         /**
          * Loaded hook
          */
-        add_action( 'plugins_loaded',  Keys::$names->lounch_cb);
+        add_action( 'plugins_loaded',  Keys::$names->plugin_launch);
 
         /**
          * Adding action links
          */
-        add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), Keys::$names->action_link_cb );
+        // add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), Keys::$names->action_link_cb );
 
         /*
 		 * Activation Plugin Hook
 		 */
-		register_activation_hook( __FILE__, Keys::$names->active_cb );
+		// register_activation_hook( __FILE__, Keys::$names->active_cb );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		register_deactivation_hook( __FILE__, Keys::$names->deactive_cb );
+		// register_deactivation_hook( __FILE__, Keys::$names->deactive_cb );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		register_uninstall_hook( __FILE__, Keys::$names->uninstall_cb );
+		// register_uninstall_hook( __FILE__, Keys::$names->uninstall_cb );
     }
 
 

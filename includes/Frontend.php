@@ -23,9 +23,9 @@ class Frontend{
             $ext = \explode('.', $scripts['src']);
             
             if(end($ext) == 'js'){
-                wp_enqueue_script( $keys, $scripts['src'], $scripts['dep'], NXP_SCRIPT_VERSION, $scripts['footer'] );
+                wp_enqueue_script( $keys, $scripts['src'], $scripts['dep'], NXH_SCRIPT_VERSION, $scripts['footer'] );
             }else{
-                wp_enqueue_style( $keys, $scripts['src'], $scripts['dep'], NXP_SCRIPT_VERSION, $scripts['footer'] );
+                wp_enqueue_style( $keys, $scripts['src'], $scripts['dep'], NXH_SCRIPT_VERSION, $scripts['footer'] );
             }
         }
 

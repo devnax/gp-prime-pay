@@ -2,18 +2,18 @@
 namespace DevNax\Help;
 use DevNax\Help\Keys as Keys;
 
-class Lounch{
+class Launch{
     
     static function run(){
        
         // load for admin
         if(is_admin()){
-            call_user_func(Keys::$names->admin_init_cb );
-            \NXLAdmin\Admin::init();
+            call_user_func(Keys::$names->plugin_admin_init );
+            Admin::init();
             return;
         }
 
         // fronend 
-        call_user_func(Keys::$names->frontend_init_cb);
+        call_user_func(Keys::$names->plugin_frontend_init);
     }
 }

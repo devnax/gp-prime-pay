@@ -27,7 +27,7 @@ return [
     "check_scripts"         => "DevNax\Help\Frontend::check_scripts",
     "front_scripts"         => [
         "Help" => [
-            'src'       => NXP_ASSETS_URI.'/js/Help.front.min.js',
+            'src'       => '/js/Help.front.min.js',
             'footer'    => true,
             'dep'       => []
         ],
