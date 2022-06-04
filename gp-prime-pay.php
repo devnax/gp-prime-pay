@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Plugin Name: WP Starter
+ * Plugin Name: GP Prime Pay
  * Description: A Plugin For starter Wordpress
  * Plugin URI:  https://site.com
  * Version:     1.0.0
  * Author:      Naxrul Ahmed
- * Author URI:  https://site.com
+ * Author URI:  https://fb.com/devnax
  * License:     GPL2
- * Text Domain: wp-starter
+ * Text Domain: gp-prime-pay
  * Domain Path: /languages
  */
 
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' )) {
  */
 include __DIR__.'/vendor/autoload.php';
 
-use DevNax\Help\Keys as Keys;
+use Devnax\GPPrime\Keys as Keys;
 
 
 final class WpStarter{
@@ -77,22 +77,22 @@ final class WpStarter{
         /**
          * Adding action links
          */
-        // add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), Keys::$names->action_link_cb );
+        add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), Keys::$names->plugin_action_link );
 
         /*
 		 * Activation Plugin Hook
 		 */
-		// register_activation_hook( __FILE__, Keys::$names->active_cb );
+		register_activation_hook( __FILE__, Keys::$names->plugin_active );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		// register_deactivation_hook( __FILE__, Keys::$names->deactive_cb );
+		register_deactivation_hook( __FILE__, Keys::$names->plugin_deactive );
 
 		/*
 		 * Uninstall Plugin Hook
 		 */
-		// register_uninstall_hook( __FILE__, Keys::$names->uninstall_cb );
+		register_uninstall_hook( __FILE__, Keys::$names->plugin_uninstall );
     }
 
 

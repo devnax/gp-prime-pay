@@ -1,6 +1,6 @@
 <?php
 
-namespace DevNax\Help;
+namespace Devnax\GPPrime;
 
 
 class ActionLinks{

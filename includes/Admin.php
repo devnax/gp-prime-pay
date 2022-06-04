@@ -1,7 +1,7 @@
 <?php
 
-namespace DevNax\Help;
-use DevNax\Help\Keys as Keys;
+namespace Devnax\GPPrime;
+use Devnax\GPPrime\Keys as Keys;
 
 
 class Admin{

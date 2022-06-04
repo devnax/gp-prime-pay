@@ -1,8 +1,8 @@
 <?php
 
-namespace DevNax\Help;
+namespace Devnax\GPPrime;
 
-use DevNax\Help\Keys as Keys;
+use Devnax\GPPrime\Keys as Keys;
 
 
 class Frontend{
@@ -12,7 +12,6 @@ class Frontend{
     static function init(){
         // start the front query
         add_action('wp_enqueue_scripts', Keys::$names->front_enqueue);
-        add_action('init', Keys::$names->front_ajax_handler);
         //add_filter('wp_enqueue_scripts',Keys::$names->front_enqueue,10,3);
     }
 

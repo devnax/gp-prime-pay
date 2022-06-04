@@ -1,19 +1,11 @@
 <?php
-namespace DevNax\Help;
-use DevNax\Help\Keys as Keys;
+namespace Devnax\GPPrime;
+use Devnax\GPPrime\Keys as Keys;
 
 class Launch{
     
     static function run(){
-       
-        // load for admin
-        if(is_admin()){
-            call_user_func(Keys::$names->plugin_admin_init );
-            Admin::init();
-            return;
-        }
-
-        // fronend 
+        call_user_func(Keys::$names->plugin_admin_init);
         call_user_func(Keys::$names->plugin_frontend_init);
     }
 }

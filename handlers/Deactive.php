@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DevNax\Help;
+namespace Devnax\GPPrime;
 
 class Deactive{
     
