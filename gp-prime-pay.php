@@ -28,19 +28,13 @@ use Devnax\GPPrime\Keys as Keys;
 
 final class WpStarter{
 
-    const PREFIX         = "NXH";
-
     /**
      * initial the Plugin
      */
     static function init(){
-        if(defined("NXH_INIT")){
-            return;
-        }
-        Keys::init();
         self::consts();
+        Keys::init();
         self::actions();
-
     }
 
     
@@ -49,16 +43,27 @@ final class WpStarter{
      * Plugin Constans
      */
     private static function consts(){
-        define('NXH_INIT', true );
-        define('NXH_VERSION', '1.1.0' );
-        define('NXH_SCRIPT_VERSION', rand() );
-        define('NXH_TXTDOMAIN', 'nx-login' );
-        define('NXH_DIR', __DIR__ );
-        define('NXH_URL', plugin_dir_url( __FILE__ ) );
-        define('NXH_ADMIN_URI', NXH_INIT.'/admin' );
-        define('NXH_ADMIN_DIR', NXH_DIR.'/admin' );
-        define('NXH_FRONTEND_DIR', NXH_DIR.'/frontend' );
-        define('NXH_FRONTEND_URI', NXH_INIT.'/frontend' );
+        define('GP_PRIME_INIT', true );
+        define('GP_PRIME_VERSION', '1.1.0' );
+        define('GP_PRIME_SCRIPT_VERSION', rand() );
+        define('GP_PRIME_TXTDOMAIN', 'nx-login' );
+        define('GP_PRIME_DIR', __DIR__ );
+        define('GP_PRIME_URL', plugin_dir_url( __FILE__ ) );
+        define('GP_PRIME_ADMIN_URI', GP_PRIME_URL.'/admin' );
+        define('GP_PRIME_ADMIN_DIR', GP_PRIME_DIR.'/admin' );
+        define('GP_PRIME_FRONTEND_DIR', GP_PRIME_DIR.'/frontend' );
+        define('GP_PRIME_FRONTEND_URI', GP_PRIME_URL.'/frontend' );
+        define('GP_PRIME_ASSET_URI', GP_PRIME_URL.'/assets' );
+
+        // GP Prime
+        // define('GP_PRIME_END_POINTS', [
+        //     'tokens' => 'https://api.globalprimepay.com/v2/tokens',
+        //     'payment' => ''
+        // ]);
+        define('GP_PRIME_END_POINTS', [
+            'tokens' => 'https://api.gbprimepay.com/v2/tokens',
+            'payment' => ''
+        ]);
     }
 
 

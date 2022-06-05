@@ -1,5 +1,5 @@
 <?php
-namespace Devnax\GPPrime\Admin\PostTypes;
+namespace Devnax\GPPrime\Admin;
 
 
 class Transection{
@@ -7,9 +7,9 @@ class Transection{
    static $type = 'gpprime_transection';
 
    static function init(){
-      \add_action( 'init',  "Devnax\GPPrime\Admin\PostTypes\Transection::register");
-      \add_filter('manage_'.self::$type.'_posts_columns', "Devnax\GPPrime\Admin\PostTypes\Transection::columns");
-      \add_action('manage_'.self::$type.'_posts_custom_column', "Devnax\GPPrime\Admin\PostTypes\Transection::manage_columns", 10, 2);
+      \add_action( 'init',  "Devnax\GPPrime\Admin\Transection::register");
+      \add_filter('manage_'.self::$type.'_posts_columns', "Devnax\GPPrime\Admin\Transection::columns");
+      \add_action('manage_'.self::$type.'_posts_custom_column', "Devnax\GPPrime\Admin\Transection::manage_columns", 10, 2);
    }
 
    static function register(){

@@ -7,6 +7,6 @@ class Uninstall{
     
     static function run(){
         //delete_option( $key );
-        //delete_option( 'NXH_date' );
+        //delete_option( 'GP_PRIME_date' );
     }
 }

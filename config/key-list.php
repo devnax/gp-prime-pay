@@ -19,15 +19,15 @@ return [
     "front_enqueue"         => "Devnax\GPPrime\Frontend::load_scripts",
     "check_scripts"         => "Devnax\GPPrime\Frontend::check_scripts",
     "front_scripts"         => [
-        "Help" => [
-            'src'       => '/js/Help.front.min.js',
+        "front-script" => [
+            'src'       => GP_PRIME_ASSET_URI.'/js/script.js',
             'footer'    => true,
             'dep'       => []
         ],
-        // "Help.css" => [
-        //     'src'       => NXP_ASSETS_URI.'/css/Help.front.min.css',
-        //     'footer'    => false,
-        //     'dep'       => []
-        // ],
+        "front-css" => [
+            'src'       => GP_PRIME_ASSET_URI.'/css/style.css',
+            'footer'    => false,
+            'dep'       => []
+        ],
     ]
 ];
