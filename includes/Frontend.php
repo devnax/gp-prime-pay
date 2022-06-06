@@ -21,7 +21,6 @@ class Frontend{
 
     
     static function load_scripts(){
-        
         foreach(Keys::$names->front_scripts as $keys => $scripts){
             $ext = \explode('.', $scripts['src']);
             

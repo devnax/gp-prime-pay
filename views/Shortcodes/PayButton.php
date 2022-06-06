@@ -1,5 +1,43 @@
+<?php 
+   echo '<pre>';
+   print_r($_POST);
+   echo '</pre>';
+
+?>
+
+
 <div>
-   <div data-gp="charge-form">
+
+<?php
+
+   if($status === 'success' || $status === 'faild'){
+      $isFaild = $status === 'faild';
+      $img = $isFaild ? GP_PRIME_ASSET_URI ."/img/payment-faild.png'?>" : GP_PRIME_ASSET_URI ."/img/payment-success.png'?>" ;
+      ?>
+      <style>
+         body{
+            overflow: hidden;
+         }
+      </style>
+      <div id="gp-payment-status">
+         <div>
+            <div>
+               <img src="<?= $img ?>" />
+            </div>
+            <h3><?= $message ?></h3>
+            <div>
+               <a href="<?= get_the_permalink() ?>">Close</a>
+            </div>
+         </div>
+      </div>
+      <?php
+   }
+
+?>
+
+   
+
+   <div data-gp="charge-form" style="display: <?= $error ? 'flex' : 'none'?>">
       <button id="gp-close-popup">&times;</button>
       <div class="gp-form-container">
          <h3 >PAY WITH CARD</h3>
@@ -13,6 +51,7 @@
             </div>
 
          </div> -->
+         <div id="gp-payment-msg" style="display: <?= $error ? 'block' : 'none'?>"><?= $error ?></div>
          <form action="#" method="POST" id="gp-pay">
             <div class="form-loading-box">
                <div class="loading-snippit">
@@ -56,7 +95,7 @@
                </div>
             </div>
             <div class="gp-field">
-               <input id="button" type="submit" value="Pay Now $100">
+               <input id="button" type="submit" value="Pay Now <?= $currency.$amount ?>">
             </div>
             <div class="gp-field" style="justify-content: center; margin-top: 20px">
                <img style="width: 250px; border-radius: 7px" src="<?= GP_PRIME_ASSET_URI.'/img/payment-methods.png'?>" />
@@ -66,3 +105,4 @@
    </div>
    <button data-gp="pay-btn" class="gp_pay_button" id="<?= $id ?>"><?= $button_text ?></button>
 </div>
+

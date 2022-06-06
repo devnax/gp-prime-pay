@@ -62,7 +62,8 @@ final class WpStarter{
         // ]);
         define('GP_PRIME_END_POINTS', [
             'tokens' => 'https://api.gbprimepay.com/v2/tokens',
-            'payment' => ''
+            'charge' => 'https://api.gbprimepay.com/v2/tokens/charge',
+            'secure' => 'https://api.gbprimepay.com/v2/tokens/3d_secured'
         ]);
     }
 
