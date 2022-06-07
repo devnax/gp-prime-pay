@@ -84,16 +84,30 @@ function paymentProcess(data) {
 
 
 
+form.find('input').focus(function(){
+   $(this).removeClass('gp-field-error')
+})
+
 
 form.submit((e) => {
    e.preventDefault();
 
    var publicKey = GP_PRIME.public_key;
    var formate = {};
+   var error = false;
    form.find('input[name]').each(function (index, ele) {
       var input = $(ele)
+      var val = input.val()
+      if(!val.trim()){
+         error = true;
+         input.addClass('gp-field-error')
+      }
       formate[input.attr('name')] = input.val()
    })
+
+   if(error){
+      return;
+   }
    loading.css({
       display: 'flex'
    })
