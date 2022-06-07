@@ -76,11 +76,14 @@ function paymentProcess(data) {
          confirm3dPayment(res.gbpReferenceNo)
       },
       error: function (res) {
-         MSG.error(res.message);
+         MSG.error(res.responseJSON.message);
          loading.fadeOut()
       }
    });
 }
+
+
+
 
 form.submit((e) => {
    e.preventDefault();

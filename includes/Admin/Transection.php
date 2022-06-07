@@ -1,5 +1,6 @@
 <?php
 namespace Devnax\GPPrime\Admin;
+use Devnax\GPPrime\Views as Views;
 
 
 class Transection{
@@ -8,7 +9,6 @@ class Transection{
 
    static function init(){
       \add_action( 'init',  "Devnax\GPPrime\Admin\Transection::register");
-      \add_action( 'init',  "Devnax\GPPrime\Admin\Transection::paymentProcess");
       \add_filter('manage_'.self::$type.'_posts_columns', "Devnax\GPPrime\Admin\Transection::columns");
       \add_action('manage_'.self::$type.'_posts_custom_column', "Devnax\GPPrime\Admin\Transection::manage_columns", 10, 2);
    }
@@ -46,7 +46,15 @@ class Transection{
    }
 
 
-   static function paymentProcess($referenceId){
+   static function enrollProcess(){
+
+      if(!isset($_POST['referenceNo'])){
+         return;
+      }
+      die;
+
+      $referenceId = $_POST['referenceNo'];
+      $gbpReferenceNo = $_POST['gbpReferenceNo'];
 
       $transection = get_post($referenceId);
       if(!$transection){
@@ -72,6 +80,9 @@ class Transection{
       }else{
          ld_update_course_access( $user->ID, $course_id );
       }
+
+      $prevMeta = get_post_meta( $referenceId, 'transection_info', true );
+      update_post_meta( $referenceId, 'transection_info', array_merge($prevMeta, ['gbpReferenceNo' => $gbpReferenceNo]));
       
       ob_start();
          Views::load('Frontend/invoice', [
@@ -79,18 +90,21 @@ class Transection{
             'user_email' => $user->user_email,
             'amount' => $amount,
             'permalink' => $permalink,
-            'invoiceId' => $response['referenceNo'],
+            'invoiceId' => $referenceId,
             'course_title' => $course->post_title
          ]);
       $content   = ob_get_clean();
+      $headers   = [];
+      $headers[] = 'From: Pie Academy <contact@houseofgriffin.com>';
+      $headers[] = 'MIME-Version: 1.0'; // note you can just use a simple email address
+      $headers[] = 'Content-type:text/html;charset=UTF-8'; // note you can just use a simple email address
       
-      // wp_mail( $user_email, 'House of Griffin Online Courses', $content, $headers );
+      // wp_mail( $user->user_email, 'House of Griffin Online Courses', $content, $headers );
       // wp_mail( 'contact@houseofgriffin.com', 'New Student Enrolled- Gouse Of Griffin', $content, $headers );
       // wp_mail( 'help@piebd.com', 'New Student Enrolled- Gouse Of Griffin ', $content, $headers );
-      wp_mail( 'najrul787@gmail.com', 'New Student Enrolled- Gouse Of Griffin ', $content, $headers );
-
-      wp_redirect( $permalink );
-      wp_die();
+      
+      // wp_redirect( $permalink );
+      // wp_die();
    }
 
    static function create($data){

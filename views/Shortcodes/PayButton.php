@@ -1,11 +1,3 @@
-<?php 
-   echo '<pre>';
-   print_r($_POST);
-   echo '</pre>';
-
-?>
-
-
 <div>
 
 <?php
@@ -26,7 +18,7 @@
             </div>
             <h3><?= $message ?></h3>
             <div>
-               <a href="<?= get_the_permalink() ?>">Close</a>
+               <button onClick='window.location.href = "<?= get_the_permalink( ) ?>"'>Close</button>
             </div>
          </div>
       </div>

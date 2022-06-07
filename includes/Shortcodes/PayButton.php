@@ -26,7 +26,7 @@ class PayButton{
          $referenceNo = $_POST['referenceNo'];
          $resultCode = $_POST['resultCode'];
          if($resultCode === '00'){
-            $transection = Transection::paymentProcess($referenceNo);
+            $transection = Transection::enrollProcess();
             $status = 'success';
          }else{
             wp_delete_post( $referenceNo );
