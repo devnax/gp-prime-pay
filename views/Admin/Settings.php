@@ -4,6 +4,10 @@
       <table class="form-table" role="presentation">
          <tbody>
             <tr>
+               <th scope="row"><label for="public_key">Test Mode</label></th>
+               <td><input name="test_mode" type="checkbox" <?= $test_mode ? "checked" : "" ?> id="test_mode" class="regular-text"></td>
+            </tr>
+            <tr>
                <th scope="row"><label for="public_key">Public Key</label></th>
                <td><input name="public_key" type="text" value="<?= $public_key?>" id="public_key" class="regular-text"></td>
             </tr>

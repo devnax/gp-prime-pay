@@ -186,6 +186,18 @@
    background: #004071;
    padding: 12px;
    margin-top: 16px;
+   color: #fff;
+   font-weight: 500;
+   border-radius: 6px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   -ms-border-radius: 6px;
+   -o-border-radius: 6px;
+}
+
+[data-gp="charge-form"] input[type="submit"]:hover{
+   background-color: #033357!important;
+   color: #fff!important;
 }
 
 [data-gp="charge-form"] input.gp-field-error{

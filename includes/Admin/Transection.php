@@ -51,7 +51,6 @@ class Transection{
       if(!isset($_POST['referenceNo'])){
          return;
       }
-      die;
 
       $referenceId = $_POST['referenceNo'];
       $gbpReferenceNo = $_POST['gbpReferenceNo'];
@@ -99,9 +98,9 @@ class Transection{
       $headers[] = 'MIME-Version: 1.0'; // note you can just use a simple email address
       $headers[] = 'Content-type:text/html;charset=UTF-8'; // note you can just use a simple email address
       
-      // wp_mail( $user->user_email, 'House of Griffin Online Courses', $content, $headers );
-      // wp_mail( 'contact@houseofgriffin.com', 'New Student Enrolled- Gouse Of Griffin', $content, $headers );
-      // wp_mail( 'help@piebd.com', 'New Student Enrolled- Gouse Of Griffin ', $content, $headers );
+      wp_mail( $user->user_email, 'House of Griffin Online Courses', $content, $headers );
+      wp_mail( 'contact@houseofgriffin.com', 'New Student Enrolled- Gouse Of Griffin', $content, $headers );
+      wp_mail( 'help@piebd.com', 'New Student Enrolled- Gouse Of Griffin ', $content, $headers );
       
       // wp_redirect( $permalink );
       // wp_die();
@@ -123,23 +122,6 @@ class Transection{
       return $id;
    }
 
-   
-   // static function create($data){
-   //    $id = wp_insert_post([
-   //       'post_title' => $data['course_title'],
-   //       'post_author' => $data['author'],
-   //       'post_status' => 'private',
-   //       'post_type' => self::$type
-   //    ]);
-
-   //    add_post_meta( $id, 'transection_info', [
-   //       'amount' => $data['amount'],
-   //       'course_id' => $data['course_id'],
-   //       'gbpReferenceNo' => $data['gbpReferenceNo'],
-   //       'referenceNo' => $data['referenceNo']
-   //    ], true );
-   // }
-
    static function register(){
         $labels = array(
             'name'                  => 'All Transections',
@@ -156,15 +138,13 @@ class Transection{
     
     
         $capabilities = array(
-            'publish_'.self::$type          => 'publish_'.self::$type,
-            'edit_'.self::$type             => 'edit_'.self::$type,
-            'edit_others_'.self::$type      => 'edit_others_'.self::$type,
+            'publish_posts'          => false,
+            // 'edit_posts'.self::$type            => 'edit_'.self::$type,
             'delete_'.self::$type           => 'delete_'.self::$type,
             'delete_others_'.self::$type    => 'delete_others_'.self::$type,
-            'read_private_'.self::$type     => 'read_private_'.self::$type,
-            'edit_'.self::$type             => 'edit_'.self::$type,
-            'delete_'.self::$type           => 'delete_'.self::$type,
-            'read_'.self::$type             => 'read_'.self::$type,
+            'read_private_posts'    => false,
+            'read_posts'             => false,
+            'create_posts'             => false,
         );
     
         $args = array(
@@ -175,7 +155,7 @@ class Transection{
             'show_in_menu'       => true,
             'query_var'          => true,
             'rewrite'            => array( 'slug' => self::$type ),
-            // 'capability_type'    => $type,
+            // 'capability_type'    => self::$type,
             'capabilities'       => $capabilities,
             'map_meta_cap'       => true,
             'has_archive'        => true,
@@ -195,7 +175,6 @@ class Transection{
          "title" => "Course Name",
          "author" => "User",
          "referenceNo" => "Referance Number",
-         "gbpReferenceNo" => "GP Reference",
          "amount" => "Amount",
          "date" => "Date"
       ];
@@ -208,9 +187,7 @@ class Transection{
          return;
       }
       if ($column_key == 'referenceNo') {
-         echo $meta['referenceNo'];
-      }elseif ($column_key == 'gbpReferenceNo') {
-         echo $meta['gbpReferenceNo'];
+         echo $post_id;
       }elseif ($column_key == 'amount') {
          echo "฿".$meta['amount'];
       }

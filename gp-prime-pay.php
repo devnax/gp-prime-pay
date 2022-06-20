@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' )) {
 	exit; // Exit if accessed directly.
 }
 
+use Devnax\GPPrime\Admin\Settings as Settings;
+
 
 /**
  * Load the autoloader
@@ -26,7 +28,7 @@ include __DIR__.'/vendor/autoload.php';
 use Devnax\GPPrime\Keys as Keys;
 
 
-final class WpStarter{
+final class GBPrimPayRoot{
 
     /**
      * initial the Plugin
@@ -56,14 +58,17 @@ final class WpStarter{
         define('GP_PRIME_ASSET_URI', GP_PRIME_URL.'/assets' );
 
         // GP Prime
-        // define('GP_PRIME_END_POINTS', [
-        //     'tokens' => 'https://api.globalprimepay.com/v2/tokens',
-        //     'payment' => ''
-        // ]);
+        $settings = Settings::get();
+        $apiUrl = 'api.globalprimepay.com';
+        if(!$settings['test_mode']){
+            $apiUrl = 'api.gbprimepay.com';
+        }
+
         define('GP_PRIME_END_POINTS', [
-            'tokens' => 'https://api.gbprimepay.com/v2/tokens',
-            'charge' => 'https://api.gbprimepay.com/v2/tokens/charge',
-            'secure' => 'https://api.gbprimepay.com/v2/tokens/3d_secured'
+            'query' => "https://$apiUrl/v1/check_status_txn",
+            'tokens' => "https://$apiUrl/v2/tokens",
+            'charge' => "https://$apiUrl/v2/tokens/charge",
+            'secure' => "https://$apiUrl/v2/tokens/3d_secured"
         ]);
     }
 
@@ -110,5 +115,5 @@ final class WpStarter{
 /**
  * Start the plugin 
  */
-WpStarter::init();
+GBPrimPayRoot::init();
 

@@ -16,6 +16,7 @@ class AjaxHandler{
    
    static function pay(){
 
+
       if(!isset($_POST['token'])){
          wp_send_json( [
             "status" => "error",
@@ -33,6 +34,7 @@ class AjaxHandler{
          ], 401);
          wp_die();
       }
+
       $token = $_POST['token'];
       $wp_user    = wp_get_current_user();
       $user    = $wp_user->data;
@@ -40,13 +42,23 @@ class AjaxHandler{
       $course_id = url_to_postid( $permalink ); 
       $course    = get_post( $course_id );
       $lds_info = get_post_meta( $course_id, '_sfwd-courses', true );
+      
+      if(!$lds_info){
+         wp_send_json( [
+            "status" => "error",
+            "message" => "Course Info Not found!"
+         ], 401);
+         wp_die();
+      }
+      
       $amount = $lds_info['sfwd-courses_course_price'];
       $secret_key = $settings['secret_key'];
+
 
       $referenceId = Transection::create([
          'course_title' => $course->post_title,
          'author' => $user->ID,
-         'customerName' => $user->display_name,
+         'customerName' => $_POST['holder_name'],
          'amount' => $amount,
          'course_id' => $course_id
       ]);
@@ -56,7 +68,7 @@ class AjaxHandler{
          'amount' => $amount,
          'referenceNo' => $referenceId,
          'detail' => $course->post_title,
-         'customerName' => $user->display_name,
+         'customerName' => $_POST['holder_name'],
          'customerEmail' => $user->user_email,
          'merchantDefined1' => $user->ID,
          'card' => array(
@@ -69,6 +81,7 @@ class AjaxHandler{
       
       
       $payload = json_encode($data);
+      
       
       $ch = curl_init(GP_PRIME_END_POINTS['charge']);
       curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -83,7 +96,6 @@ class AjaxHandler{
       );
       
       $result = curl_exec($ch);
-      
       curl_close($ch);
       
       $response = json_decode($result, true);

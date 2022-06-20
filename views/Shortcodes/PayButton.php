@@ -1,48 +1,10 @@
 <div>
-
-<?php
-
-   if($status === 'success' || $status === 'faild'){
-      $isFaild = $status === 'faild';
-      $img = $isFaild ? GP_PRIME_ASSET_URI ."/img/payment-faild.png'?>" : GP_PRIME_ASSET_URI ."/img/payment-success.png'?>" ;
-      ?>
-      <style>
-         body{
-            overflow: hidden;
-         }
-      </style>
-      <div id="gp-payment-status">
-         <div>
-            <div>
-               <img src="<?= $img ?>" />
-            </div>
-            <h3><?= $message ?></h3>
-            <div>
-               <button onClick='window.location.href = "<?= get_the_permalink( ) ?>"'>Close</button>
-            </div>
-         </div>
-      </div>
-      <?php
-   }
-
-?>
-
-   
+  
 
    <div data-gp="charge-form" style="display: <?= $error ? 'flex' : 'none'?>">
       <button id="gp-close-popup">&times;</button>
       <div class="gp-form-container">
          <h3 >PAY WITH CARD</h3>
-         <!-- <div class="gp-product">
-            <div>
-               <img alt="" src="https://houseofgriffin.app/wp-content/uploads/2021/06/GED-Math_01-1024x607-1.jpg" />
-            </div>
-            <div>
-               <h3>GED Mathematical Reasoning</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro et esse quidem eius</p>
-            </div>
-
-         </div> -->
          <div id="gp-payment-msg" style="display: <?= $error ? 'block' : 'none'?>"><?= $error ?></div>
          <form action="#" method="POST" id="gp-pay">
             <div class="form-loading-box">
@@ -56,13 +18,13 @@
             <div class="gp-field">
                <div>
                   <label for="holder_name">Holder Name</label>
-                  <input id="holder_name" name="holder_name" type="text" maxlength="250"  value="">
+                  <input id="holder_name" name="holder_name" type="text" maxlength="250"  value="Card Test UAT (Server Test)">
                </div>
             </div>
             <div class="gp-field">
                <div>
                   <label for="card_number">Card Number</label>
-                  <input id="card_number" name="card_number"  type="text" maxlength="16" value="4535 0177 1053 5">
+                  <input id="card_number" name="card_number"  type="text" maxlength="16" value="4535017710535">
                </div>
             </div>
 

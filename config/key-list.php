@@ -13,7 +13,7 @@ return [
     "plugin_frontend_init"      => "Devnax\GPPrime\Frontend::init",
 
     // Admin Keys
-    "admin_enqueue_scripts"     => "Devnax\GPPrime\Admin::Scripts",
+    "admin_enqueue_scripts"     => "Devnax\GPPrime\Admin::load_scripts",
 
     // Front Scripts
     "front_enqueue"         => "Devnax\GPPrime\Frontend::load_scripts",
@@ -34,5 +34,11 @@ return [
             'footer'    => false,
             'dep'       => []
         ],
+    ],
+    "admin_scripts"         => [
+        "gp-admin-script" => [
+            'src'       => GP_PRIME_ASSET_URI.'/js/admin-script.js',
+            'footer'    => true
+        ]
     ]
 ];

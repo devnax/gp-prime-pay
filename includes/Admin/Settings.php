@@ -38,26 +38,31 @@ class Settings{
    static function menu_page(){
       
       $public_key  = null;
-      $secret_key = null;
+      $secret_key  = null;
+      $test_mode   = null;
       
       $settings = self::get();
       if($settings){
          $public_key  = $settings['public_key'];
          $secret_key  = $settings['secret_key'];
+         $test_mode   = $settings['test_mode'];
       }
       
       if(isset($_POST['gp_settings_submit'])){
          $public_key = $_POST['public_key'];
          $secret_key = $_POST['secret_key'];
+         $test_mode  = $_POST['test_mode'];
          self::set([
             'public_key' => $public_key,
-            'secret_key' => $secret_key
+            'secret_key' => $secret_key,
+            'test_mode' => $test_mode
          ]);
       }
       
       Views::load('Admin/Settings', [
          'public_key' => $public_key,
-         'secret_key' => $secret_key
+         'secret_key' => $secret_key,
+         'test_mode' => $test_mode
       ]);
    }
 }

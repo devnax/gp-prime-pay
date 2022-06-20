@@ -67,7 +67,6 @@ function confirm3dPayment(gbpReferenceNo) {
 
 function paymentProcess(data) {
    data.action = 'gp_prime_pay'
-
    jQuery.ajax({
       type: "POST",
       url: GP_PRIME.ajaxurl, // Test URL: https://api.globalprimepay.com/v2/tokens , Production URL: https://api.gbprimepay.com/v2/tokens
@@ -76,12 +75,11 @@ function paymentProcess(data) {
          confirm3dPayment(res.gbpReferenceNo)
       },
       error: function (res) {
-         MSG.error(res.responseJSON.message);
          loading.fadeOut()
+         MSG.error(res.responseJSON?.message || res?.statusText);
       }
    });
 }
-
 
 
 form.find('input').focus(function(){
@@ -89,6 +87,7 @@ form.find('input').focus(function(){
 })
 
 
+/// Read Token
 form.submit((e) => {
    e.preventDefault();
 

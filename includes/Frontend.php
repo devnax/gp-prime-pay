@@ -4,6 +4,7 @@ namespace Devnax\GPPrime;
 use Devnax\GPPrime\Keys as Keys;
 use Devnax\GPPrime\Shortcodes\PayButton as PayButton;
 use Devnax\GPPrime\Frontend\AjaxHandler as AjaxHandler;
+use Devnax\GPPrime\Frontend\LearnDash as LearnDash;
 use Devnax\GPPrime\Admin\Settings as Settings;
 
 
@@ -13,10 +14,9 @@ class Frontend{
 
     static function init(){
         PayButton::init();
+        LearnDash::init();
         AjaxHandler::init();
-        // start the front query
         add_action('wp_enqueue_scripts', Keys::$names->front_enqueue);
-        //add_filter('wp_enqueue_scripts',Keys::$names->front_enqueue,10,3);
     }
 
     
@@ -45,13 +45,5 @@ class Frontend{
 
         wp_localize_script( 'jquery', 'GP_PRIME', $vars );
     }
-
-
-   
-    static function check_scripts($src){
-        //pre($src);
-        
-    }
-
 
 }
