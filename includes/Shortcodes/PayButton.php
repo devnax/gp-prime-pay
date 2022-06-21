@@ -79,7 +79,7 @@ class PayButton{
       if(!$settings){
          echo 'Public Key Not Found';
       }else{
-         Views::load('Shortcodes/PayButton', array_merge($atts, $settings));
+         Views::load('Shortcodes/PayButton', array_merge($atts, $settings, ['is_loggedin' => is_user_logged_in()]));
       }
       return ob_get_clean();
    }

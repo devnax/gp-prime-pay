@@ -113,8 +113,8 @@ form.submit((e) => {
    MSG.hide();
 
    var dataReq = {
-      "rememberCard": false,
-      "card": {
+      rememberCard: false,
+      card: {
          name: formate.holder_name,
          number: formate.card_number,
          expirationMonth: formate.expire_month,
@@ -140,12 +140,13 @@ form.submit((e) => {
                holder_name: formate.holder_name
             })
          }else{
+            loading.fadeOut()
             MSG.error(res.resultMessage)
          }
       },
       error: function (res) {
-         MSG.error(res.responseJSON.message);
          loading.fadeOut()
+         MSG.error(res.responseJSON.message);
       }
    });
 
