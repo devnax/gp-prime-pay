@@ -7,12 +7,12 @@ use Devnax\GPPrime\Admin\Transection as Transection;
 class PayButton{
    static function init(){
      add_shortcode('gp_pay_button', 'Devnax\GPPrime\Shortcodes\PayButton::template');
-     add_action( 'the_content', 'Devnax\GPPrime\Shortcodes\PayButton::process');
+     add_action( 'the_content', 'Devnax\GPPrime\Shortcodes\PayButton::the_content');
    }
    
 
 
-   static function process($content){
+   static function the_content($content){
       $status = '';
       $message = '';
 
@@ -69,7 +69,7 @@ class PayButton{
       $atts = shortcode_atts( [
          'amount' => $amount,
          'currency' => "฿",
-         'button_text' => "Pay Now",
+         'button_text' => "Pay With Card",
          'id' => 'gp_pay_button'
       ], $atts);
       $settings = Settings::get();

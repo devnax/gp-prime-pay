@@ -2,7 +2,7 @@ var $ = jQuery
 var body = $('body')
 var container = $('[data-gp="charge-form"]');
 var gp_pay_button = $('[data-gp="pay-btn"]');
-var form = $('form#gp-pay');
+var form = $('form[data-gp-pay]').eq(0);
 var closeBtn = $('#gp-close-popup');
 var loading = $('.form-loading-box')
 var msgContainer = $('#gp-payment-msg')

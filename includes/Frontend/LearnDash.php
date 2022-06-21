@@ -15,10 +15,10 @@ class LearnDash{
    }
 
    static function button($buttons, $params = 0){
-
+      $text = empty($buttons) ? "Continue to order" : "Pay With Card";
       ob_start();
+      echo do_shortcode("[gp_pay_button button_text='$text']");
       echo $buttons;
-      echo do_shortcode('[gp_pay_button]');
       return ob_get_clean();
    }
 }
