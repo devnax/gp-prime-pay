@@ -447,7 +447,7 @@
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; margin: 0; padding: 0;">
             <tr>
               <td class="email-masthead" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; text-align: center; padding: 0 0;" align="center">
-                <a href="https://example.com" class="f-fallback email-masthead_name" style="color: #bf2d93; font-size: 22px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;margin-top: 40px">
+                <a class="f-fallback email-masthead_name" style="color: #03423a; font-size: 22px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;margin-top: 40px">
                 Congratulations!
               </a>
               </td>
@@ -466,7 +466,7 @@
                           <span style="color: #727272"><?= $user_email ?>, </span>
                         </p>
                         <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">
-                          Thank you for enrolling in <b><a style="color: #bf2d93" href="mailto:contact@houseofgriffin.com">House Of Griffin</a></b> online course(s). The following is an invoice of your enrollment, please keep this email for any future references.
+                          Thank you for enrolling in <b><a style="color: #03423a" href="mailto:contact@houseofgriffin.com">House Of Griffin</a></b> online course(s). The following is an invoice of your enrollment, please keep this email for any future references.
                         </p>
                         <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 0 21px;">
                           <tr>
@@ -488,12 +488,11 @@
                         <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; text-align: center; margin: 30px auto; padding: 0;">
                           <tr>
                             <td align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px;">
-                              <!-- Border based button
-           https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
+                              
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                 <tr>
                                   <td align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px;">
-                                    <a href="<?= $permalink ?>" class="f-fallback button button--green" target="_blank" style="color: #FFF; border-color: #bf2d93; border-style: solid; border-width: 10px 18px; background-color: #bf2d93; display: inline-block; text-decoration: none; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); -webkit-text-size-adjust: none; box-sizing: border-box;">Get Started!</a>
+                                    <a href="<?= $permalink ?>" class="f-fallback button button--green" target="_blank" style="color: #FFF; border-color: #03423a; border-style: solid; border-width: 10px 18px; background-color: #03423a; display: inline-block; text-decoration: none; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); -webkit-text-size-adjust: none; box-sizing: border-box;">Get Started!</a>
                                   </td>
                                 </tr>
                               </table>
@@ -536,7 +535,7 @@
                             </td>
                           </tr>
                         </table>
-                        <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">If you have any questions about this invoice, simply reach out to our <a href="https://www.houseofgriffin.com/contact" style="color: #bf2d93;">support team</a> for help.</p>
+                        <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">If you have any questions about this invoice, simply reach out to our <a href="https://www.houseofgriffin.com/contact" style="color: #03423a;">support team</a> for help.</p>
                         <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">Cheers,
                           <br />The House Of Griffin Team</p>
                         <!-- Sub copy -->
@@ -558,10 +557,7 @@
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="width: 570px; -premailer-width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; text-align: center; margin: 0 auto; padding: 0;">
                   <tr>
                     <td class="content-cell" align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 35px;">
-                      <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2020 House Of Griffin. All rights reserved.</p>
-                      <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">
-                        House Of Griffin
-                      </p>
+                      <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© House Of Griffin. All rights reserved.</p>
                     </td>
                   </tr>
                 </table>
