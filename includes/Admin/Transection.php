@@ -59,15 +59,18 @@ class Transection{
       if(!$transection){
          return;
       }
-      $transection_meta = get_post_meta( $referenceId, 'transection_info', true );
+      $transection_info = self::getInfo( $referenceId);
+      if(isset($transection_info['status']) && $transection_info['status'] === 'complete'){
+         return;
+      }
 
       $author        = $transection->post_author;
       $wp_user       = get_user_by('id', $author);
       $user          = $wp_user->data;
-      $course_id     = $transection_meta['course_id']; 
+      $course_id     = $transection_info['course_id']; 
       $course        = get_post( $course_id );
       $permalink     = get_permalink($course_id);
-      $amount        = $transection_meta['amount'];
+      $amount        = $transection_info['amount'];
 
       if($course->post_type === 'groups'){
          $courses = learndash_get_group_courses_list($course_id);
@@ -80,8 +83,7 @@ class Transection{
          ld_update_course_access( $user->ID, $course_id );
       }
 
-      $prevMeta = get_post_meta( $referenceId, 'transection_info', true );
-      update_post_meta( $referenceId, 'transection_info', array_merge($prevMeta, ['gbpReferenceNo' => $gbpReferenceNo]));
+      update_post_meta( $referenceId, 'transection_info', array_merge($transection_info, ['gbpReferenceNo' => $gbpReferenceNo, 'status' => "complete"]));
       
       ob_start();
          Views::load('Frontend/invoice', [
@@ -94,16 +96,21 @@ class Transection{
          ]);
       $content   = ob_get_clean();
       $headers   = [];
-      $headers[] = 'From: Pie Academy <contact@houseofgriffin.com>';
+      $headers[] = 'From: House Of Griffin <contact@houseofgriffin.com>';
       $headers[] = 'MIME-Version: 1.0'; // note you can just use a simple email address
       $headers[] = 'Content-type:text/html;charset=UTF-8'; // note you can just use a simple email address
       
       wp_mail( $user->user_email, 'House of Griffin Online Courses', $content, $headers );
-      wp_mail( 'contact@houseofgriffin.com', 'New Student Enrolled- Gouse Of Griffin', $content, $headers );
-      wp_mail( 'help@piebd.com', 'New Student Enrolled- Gouse Of Griffin ', $content, $headers );
+      wp_mail( 'contact@houseofgriffin.com', 'New Student Enrolled - Gouse Of Griffin', $content, $headers );
+      wp_mail( 'help@piebd.com', 'New Student Enrolled - Gouse Of Griffin ', $content, $headers );
       
       // wp_redirect( $permalink );
       // wp_die();
+   }
+
+
+   static function getInfo($post_id){
+      return get_post_meta( $post_id, 'transection_info', true );
    }
 
    static function create($data){
@@ -117,6 +124,7 @@ class Transection{
       add_post_meta( $id, 'transection_info', [
          'amount' => $data['amount'],
          'course_id' => $data['course_id'],
+         'status' => 'panding'
       ], true );
 
       return $id;
@@ -176,13 +184,14 @@ class Transection{
          "author" => "User",
          "referenceNo" => "Referance Number",
          "amount" => "Amount",
+         "status" => "Status",
          "date" => "Date"
       ];
    }
 
 
    static function manage_columns($column_key, $post_id){
-      $meta = get_post_meta( $post_id, 'transection_info', true);
+      $meta = self::getInfo( $post_id);
       if(!$meta){
          return;
       }
@@ -190,6 +199,8 @@ class Transection{
          echo $post_id;
       }elseif ($column_key == 'amount') {
          echo "฿".$meta['amount'];
+      }elseif ($column_key == 'status') {
+         echo $meta['status'];
       }
    }
 }

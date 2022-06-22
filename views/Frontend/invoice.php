@@ -460,13 +460,13 @@
                   <tr>
                     <td class="content-cell" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 35px;">
                       <div class="f-fallback">
-                        <img src="https://ged.mypiebd.com/wp-content/uploads/2020/05/white-with-logo1-269x68.png" style="margin-bottom: 20px;"/>
+                        <img width="100" style="width: 100px" src="https://houseofgriffin.app/wp-content/uploads/2022/06/houseofgriffin_green_logo-copy.gif" style="margin-bottom: 20px;"/>
                         <h1 style="margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left;" align="left">Hi <?= $user_nicename ?>,</h1>
                         <p>
                           <span style="color: #727272"><?= $user_email ?>, </span>
                         </p>
                         <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">
-                          Thank you for enrolling in <b><a style="color: #bf2d93" href="https://ged.mypiebd.com">PIE Academy</a></b> online course(s). The following is an invoice of your enrollment, please keep this email for any future references.
+                          Thank you for enrolling in <b><a style="color: #bf2d93" href="mailto:contact@houseofgriffin.com">House Of Griffin</a></b> online course(s). The following is an invoice of your enrollment, please keep this email for any future references.
                         </p>
                         <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 0 21px;">
                           <tr>
@@ -536,9 +536,9 @@
                             </td>
                           </tr>
                         </table>
-                        <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">If you have any questions about this invoice, simply reach out to our <a href="https://ged.mypiebd.com/contact" style="color: #bf2d93;">support team</a> for help.</p>
+                        <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">If you have any questions about this invoice, simply reach out to our <a href="https://www.houseofgriffin.com/contact" style="color: #bf2d93;">support team</a> for help.</p>
                         <p style="font-size: 16px; line-height: 1.625; color: #333; margin: .4em 0 1.1875em;">Cheers,
-                          <br />The PIE Academy Team</p>
+                          <br />The House Of Griffin Team</p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation" style="margin-top: 25px; padding-top: 25px; border-top-width: 1px; border-top-color: #EAEAEC; border-top-style: solid;">
                           <tr>
@@ -558,9 +558,9 @@
                 <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="width: 570px; -premailer-width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; text-align: center; margin: 0 auto; padding: 0;">
                   <tr>
                     <td class="content-cell" align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 35px;">
-                      <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2020 PIE Academy. All rights reserved.</p>
+                      <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2020 House Of Griffin. All rights reserved.</p>
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">
-                        PIE International Education
+                        House Of Griffin
                       </p>
                     </td>
                   </tr>

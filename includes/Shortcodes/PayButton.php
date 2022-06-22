@@ -13,17 +13,24 @@ class PayButton{
 
 
    static function the_content($content){
+      global $post;
+      
       $status = '';
       $message = '';
 
       if(isset($_POST['referenceNo'])){
          $referenceNo = $_POST['referenceNo'];
          $resultCode = $_POST['resultCode'];
+         
          if($resultCode === '00'){
             Transection::enrollProcess();
             $status = 'success';
          }else{
-           wp_delete_post( $referenceNo );
+            $info = Transection::getInfo($referenceNo);
+            
+            if($info['status'] === 'panding'){
+               wp_delete_post( $referenceNo );
+            }
            $status = 'faild';
          }
          $message = Transection::getMsg($resultCode);

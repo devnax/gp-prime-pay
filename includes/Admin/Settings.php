@@ -12,7 +12,13 @@ class Settings{
    }
    
    static function get(){
-      return get_option('gp_prime_settings');
+      $settings = get_option('gp_prime_settings');
+      if($settings['test_mode']){
+         $settings['public_key'] = 'zk56zPpqwzFoWPe7zkSR5zcpzQg74CjB';
+         $settings['secret_key'] = 'yJJrr9irmWEgqXxKyeCGgvroj91A6DLG';
+      }
+
+      return $settings;
    }
    
    static function set($data){
